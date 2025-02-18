@@ -13,5 +13,9 @@ UCLASS()
 class SBPONG_API ACpuPaddle : public APaddle
 {
 	GENERATED_BODY()
+
+	virtual void BeginPlay() override;
+
+	virtual void Tick(float DeltaTime) override;
 	
 };

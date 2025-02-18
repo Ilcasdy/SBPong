@@ -39,4 +39,6 @@ public:
 	UFUNCTION()
 	void OnActorOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
+
+
 };
