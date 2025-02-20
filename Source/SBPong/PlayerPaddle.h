@@ -13,5 +13,13 @@ UCLASS()
 class SBPONG_API APlayerPaddle : public APaddle
 {
 	GENERATED_BODY()
+
+public:
+
+	void MoveUp(float Amount);
+
+protected:
+
+
 	
 };

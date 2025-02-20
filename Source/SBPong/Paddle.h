@@ -15,6 +15,12 @@ public:
 	// Sets default values for this pawn's properties
 	APaddle();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	class UBoxComponent* CollisionBox;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	UStaticMeshComponent* VisualMesh;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -26,4 +32,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void OnCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	class UFloatingPawnMovement* FloatingPawnMovement;
+	float CurrentVelocity = 0;
 };

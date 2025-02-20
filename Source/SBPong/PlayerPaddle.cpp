@@ -2,4 +2,9 @@
 
 
 #include "PlayerPaddle.h"
+#include "GameFramework/FloatingPawnMovement.h"
 
+void APlayerPaddle::MoveUp(float Amount)
+{
+    FloatingPawnMovement->AddInputVector(GetActorUpVector() * Amount);
+}
