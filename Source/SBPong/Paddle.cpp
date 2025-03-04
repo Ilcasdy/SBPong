@@ -32,9 +32,6 @@ void APaddle::BeginPlay()
 {
 	Super::BeginPlay();
 
-	CollisionBox->OnComponentBeginOverlap.AddDynamic(this,
-		&APaddle::OnCollisionBoxBeginOverlap);
-	
 }
 
 // Called every frame
@@ -50,6 +47,7 @@ void APaddle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+
 
 
 
