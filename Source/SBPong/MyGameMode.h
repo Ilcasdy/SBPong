@@ -17,5 +17,7 @@ class SBPONG_API AMyGameMode : public AGameModeBase
 protected:
 
 	virtual void BeginPlay() override;
+
+	virtual void Tick(float DeltaTime) override;
 	
 };

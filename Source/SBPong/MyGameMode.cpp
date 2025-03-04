@@ -3,6 +3,8 @@
 
 #include "MyGameMode.h"
 #include "GameCamera.h"
+#include "Ball.h"
+#include "BallSpawner.h"
 #include "Kismet/GameplayStatics.h"
 
 void AMyGameMode::BeginPlay()
@@ -22,4 +24,12 @@ void AMyGameMode::BeginPlay()
             //PC->SetViewTargetWithBlend(TheCamera, 3.0f, VTBlend_Cubic);
         }
     }
+}
+
+void AMyGameMode::Tick(float DeltaTime)
+{
+
+    Super::Tick(DeltaTime);
+
+
 }

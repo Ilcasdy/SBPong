@@ -13,5 +13,11 @@ UCLASS()
 class SBPONG_API APlayerPaddle : public APaddle
 {
 	GENERATED_BODY()
+
+public:
+
+	void MoveUp(float Amount);
+
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 };

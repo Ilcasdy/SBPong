@@ -20,6 +20,18 @@ public:
 
 	int GetCpuScore();
 
+	void IncrementPlayerScore();
+
+	void IncrementCpuScore();
+
+	UPROPERTY(EditAnywhere, Category = HUD)
+	TSubclassOf<class UPlayerHUD> WBP_PlayerHUD;
+
+	class UPlayerHUD* PlayerHudInstance;
+
+	virtual void BeginPlay() override;
+
+
 private:
 
 	int PlayerScore = 0;

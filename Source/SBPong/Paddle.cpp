@@ -2,6 +2,7 @@
 
 
 #include "Paddle.h"
+#include "GameFramework/FloatingPawnMovement.h"
 #include "Components/BoxComponent.h"
 
 // Sets default values
@@ -9,24 +10,30 @@ APaddle::APaddle()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	// components
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	VisualMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualMesh"));
+	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
 
 	CollisionBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 	SetRootComponent(CollisionBox);
 	VisualMesh->SetupAttachment(CollisionBox);
+
+	
+	CollisionBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	CollisionBox->SetCollisionProfileName("Pawn");
+	CollisionBox->SetNotifyRigidBodyCollision(true);
 }
 
-void APaddle::MoveUp(float Amount)
-{
-}
 
 // Called when the game starts or when spawned
 void APaddle::BeginPlay()
 {
 	Super::BeginPlay();
+
+	CollisionBox->OnComponentBeginOverlap.AddDynamic(this,
+		&APaddle::OnCollisionBoxBeginOverlap);
 	
 }
 
@@ -44,7 +51,6 @@ void APaddle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
-void APaddle::OnActorOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
-{
-}
+
+
 

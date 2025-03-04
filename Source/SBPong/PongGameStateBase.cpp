@@ -2,6 +2,7 @@
 
 
 #include "PongGameStateBase.h"
+#include "PlayerHUD.h"
 
 int APongGameStateBase::GetPlayerScore()
 {
@@ -11,4 +12,26 @@ int APongGameStateBase::GetPlayerScore()
 int APongGameStateBase::GetCpuScore()
 {
     return CpuScore;
+}
+
+void APongGameStateBase::IncrementPlayerScore()
+{
+    PlayerScore++;
+}
+
+void APongGameStateBase::IncrementCpuScore()
+{
+    CpuScore++;
+}
+
+void APongGameStateBase::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (WBP_PlayerHUD)
+	{
+		PlayerHudInstance = CreateWidget<UPlayerHUD>(GetWorld(), WBP_PlayerHUD);
+
+		PlayerHudInstance->AddToViewport();
+	}
 }
